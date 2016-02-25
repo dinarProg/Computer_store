@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="electronics_store.view.MainController">
+    <children>
+        <HBox alignment="TOP_RIGHT" prefHeight="800.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <TableView fx:id="tableView" onMouseEntered="#disabledButtons" onMousePressed="#enabledButtons" prefHeight="574.0" prefWidth="495.0" HBox.hgrow="ALWAYS">
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+                <VBox>
+                    <children>
+                        <TitledPane animated="false" text="Управление">
+                            <content>
+                                <AnchorPane>
+                                    <children>
+                              <VBox alignment="TOP_CENTER" layoutX="89.5999984741211" layoutY="9.600000381469727" spacing="5.0">
+                                 <children>
+                                                <Button layoutX="92.60000038146973" layoutY="9.600000381469727" mnemonicParsing="false" onAction="#getAllProducts" prefHeight="25.0" prefWidth="145.0" text="Показать все товары" />
+                                                <Button layoutX="96.60000038146973" layoutY="114.60000038146973" mnemonicParsing="false" onAction="#handleInsertProduct" prefHeight="25.0" prefWidth="145.0" text="Добавить запись" />
+                                                <Button fx:id="buttonEdit" layoutX="90.60000038146973" layoutY="44.60000038146973" mnemonicParsing="false" onAction="#handleEditProduct" prefHeight="25.0" prefWidth="145.0" text="Редактировать" />
+                                                <Button fx:id="buttonDelete" layoutX="89.60000038146973" layoutY="79.60000038146973" mnemonicParsing="false" onAction="#handleDeleteProduct" prefHeight="25.0" prefWidth="145.0" text="Удалить" />
+                                                <Button layoutX="96.60000038146973" layoutY="149.60000038146973" mnemonicParsing="false" onAction="#handleClose" prefHeight="25.0" prefWidth="145.0" text="Выход" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </opaqueInsets>
+                              </VBox>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </TitledPane>
+                        <TitledPane text="Категории">
+                            <content>
+                                <AnchorPane nodeOrientation="LEFT_TO_RIGHT">
+                                    <children>
+                                        <Accordion nodeOrientation="LEFT_TO_RIGHT" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-10.0">
+                                            <panes>
+                                                <TitledPane animated="false" text="Компьютеры">
+                                                    <content>
+                                                        <AnchorPane>
+                                                            <children>
+                                                                <VBox layoutX="10.0" layoutY="10.0" prefHeight="273.0" prefWidth="253.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <children>
+                                                                        <GridPane layoutX="22.0" layoutY="25.0" prefHeight="241.0" prefWidth="259.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                            <columnConstraints>
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                            </columnConstraints>
+                                                                            <rowConstraints>
+                                                                                <RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="108.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                                                                            </rowConstraints>
+                                                                            <children>
+                                                                                <Label text="Тип процессора:" />
+                                                                                <VBox GridPane.columnIndex="1">
+                                                                                    <children>
+                                                                                        <CheckBox fx:id="check_AMD10" mnemonicParsing="false" text="AMD A10" />
+                                                                                        <CheckBox fx:id="check_AMD6" mnemonicParsing="false" text="AMD A6" />
+                                                                                        <CheckBox fx:id="check_Celeron" mnemonicParsing="false" text="Intel Celeron" />
+                                                                                        <CheckBox fx:id="check_i3" mnemonicParsing="false" text="Intel Core i3" />
+                                                                                        <CheckBox fx:id="check_i5" mnemonicParsing="false" text="Intel Core i5" />
+                                                                                        <CheckBox fx:id="check_i7" mnemonicParsing="false" text="Intel Core i7" />
+                                                                                    </children>
+                                                                                </VBox>
+                                                                                <Label text="Количество ядер:" GridPane.rowIndex="1" />
+                                                                                <TextField fx:id="text_CounCore" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                                                <Label text="Объем ОП (Гбайт):" GridPane.rowIndex="2" />
+                                                                                <TextField fx:id="text_ValumeRAM" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                                                <Label text="Объем ЖД (Гбайт):" GridPane.rowIndex="3" />
+                                                                                <TextField fx:id="text_ValumeHDD" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                                            </children>
+                                                                        </GridPane>
+                                                                        <Button layoutX="75.0" layoutY="141.0" mnemonicParsing="false" onAction="#handleSerchComputers" prefHeight="25.0" prefWidth="279.0" text="Поиск" />
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                    </content>
+                                                </TitledPane>
+                                                <TitledPane animated="false" text="Ноутбуки">
+                                                    <content>
+                                                        <AnchorPane>
+                                                            <children>
+                                                                <VBox alignment="TOP_CENTER" layoutX="19.600000381469727" layoutY="19.600000381469727" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <children>
+                                                                        <GridPane layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="9.200000000000045" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="9.200000000000045" AnchorPane.topAnchor="10.0">
+                                                                            <columnConstraints>
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                            </columnConstraints>
+                                                                            <rowConstraints>
+                                                                                <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="109.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="75.0" minHeight="0.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="85.0" minHeight="0.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                                                                            </rowConstraints>
+                                                                            <children>
+                                                                                <Label text="Производитель:" />
+                                                                                <TextField fx:id="text_manufacturerLaptop" GridPane.columnIndex="1" />
+                                                                                <Label text="Диагональ экрана:" GridPane.rowIndex="1" />
+                                                                                <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <children>
+                                                                  <ListView fx:id="lst_diagonalLaptop" prefHeight="200.0" prefWidth="200.0">
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="5.0" top="5.0" />
+                                                                     </VBox.margin></ListView>
+                                                               </children>
+                                                                                </VBox>
+                                                                                <VBox GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <children>
+                                                                  <ListView fx:id="lst_processorLaptop" prefHeight="200.0" prefWidth="200.0">
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="5.0" top="5.0" />
+                                                                     </VBox.margin></ListView>
+                                                               </children>
+                                                                                </VBox>
+                                                                                <Label text="Тип процессора:" GridPane.rowIndex="2" />
+                                                                                <Label text="Количество ядер:" GridPane.rowIndex="3" />
+                                                                                <TextField fx:id="text_countCoreLaptop" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                                                <TextField fx:id="text_valumeLaptop" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                                                <Label text="Объем ОП (Гбайт):" GridPane.rowIndex="4" />
+                                                                                <Label text="Объем ЖД (Гбайт):" GridPane.rowIndex="5" />
+                                                                                <TextField fx:id="text_hddLaptop" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                                            </children>
+                                                                        </GridPane>
+                                                                        <Button layoutX="20.0" layoutY="388.0" mnemonicParsing="false" onAction="#handleSerchLaptops" prefHeight="25.0" prefWidth="256.0" text="Поиск" />
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                    </content>
+                                                </TitledPane>
+                                                <TitledPane animated="false" text="Процессоры">
+                                                    <content>
+                                                        <AnchorPane>
+                                                            <children>
+                                                                <VBox alignment="TOP_CENTER" layoutX="19.600000381469727" layoutY="19.600000381469727" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <children>
+                                                                        <GridPane layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="9.200000000000045" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="9.200000000000045" AnchorPane.topAnchor="10.0">
+                                                                            <columnConstraints>
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                            </columnConstraints>
+                                                                            <rowConstraints>
+                                                                                <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="105.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="97.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="75.0" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="85.0" minHeight="0.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                                                                            </rowConstraints>
+                                                                            <children>
+                                                                                <Label text="Производитель:" GridPane.rowIndex="0" />
+                                                                                <VBox GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                                               <children>
+                                                                  <TextField fx:id="text_manufacturerProcessor" />
+                                                               </children>
+                                                                                </VBox>
+                                                                                <Label text="Семейство процессоров:" GridPane.rowIndex="1" />
+                                                                                <VBox GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <children>
+                                                                  <ListView fx:id="lst_familyProcessor" prefHeight="200.0" prefWidth="200.0">
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="5.0" top="5.0" />
+                                                                     </VBox.margin>
+                                                                  </ListView>
+                                                               </children>
+                                                                                </VBox>
+                                                                                <Label text="Сокет:" GridPane.rowIndex="2" />
+                                                                                <VBox GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <children>
+                                                                  <ListView fx:id="lst_socketProcessor" prefHeight="200.0" prefWidth="200.0">
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="5.0" top="5.0" />
+                                                                     </VBox.margin>
+                                                                  </ListView>
+                                                               </children>
+                                                                                </VBox>
+                                                                                <Label text="Количество ядер:" GridPane.rowIndex="3" />
+                                                                                <TextField fx:id="text_countCoreProcessor" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                                                <Label text="Тактовая частота:" GridPane.rowIndex="4" />
+                                                                                <VBox GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                                                    <children>
+                                                                                        <CheckBox fx:id="frequency1" mnemonicParsing="false" text="2.0 - 2.9 GHz" />
+                                                                                        <CheckBox fx:id="frequency2" mnemonicParsing="false" text="3.0 - 3.9 GHz" />
+                                                                                        <CheckBox fx:id="frequency3" mnemonicParsing="false" text="3.3 - 3.7 GHz" />
+                                                                                        <CheckBox fx:id="frequency4" mnemonicParsing="false" text="4.0 - … GHz" />
+                                                                                    </children>
+                                                                                </VBox>
+                                                                            </children>
+                                                                        </GridPane>
+                                                                        <Button layoutX="20.0" layoutY="388.0" mnemonicParsing="false" onAction="#handleSerchProcesoors" prefHeight="25.0" prefWidth="256.0" text="Поиск" />
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                    </content>
+                                                </TitledPane>
+                                                <TitledPane animated="false" text="Материнские платы">
+                                                    <content>
+                                                        <AnchorPane>
+                                                            <children>
+                                                                <VBox alignment="TOP_CENTER" layoutX="19.600000381469727" layoutY="19.600000381469727" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <children>
+                                                                        <GridPane layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="9.200000000000045" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="9.200000000000045" AnchorPane.topAnchor="10.0">
+                                                                            <columnConstraints>
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                            </columnConstraints>
+                                                                            <rowConstraints>
+                                                                                <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="26.999998092651367" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="124.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="75.0" minHeight="0.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints vgrow="SOMETIMES" />
+                                                                            </rowConstraints>
+                                                                            <children>
+                                                                                <Label text="Производитель:" GridPane.rowIndex="0" />
+                                                                                <VBox GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                                               <children>
+                                                                  <TextField fx:id="text_manufacturerMotherboard" />
+                                                               </children>
+                                                                                </VBox>
+                                                                                <Label text="Форм-фактор:" GridPane.rowIndex="1" />
+                                                                                <VBox GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                                                    <children>
+                                                                                        <CheckBox fx:id="formFactor1" mnemonicParsing="false" text="ATX" />
+                                                                                        <CheckBox fx:id="formFactor2" mnemonicParsing="false" text="mATX" />
+                                                                                        <CheckBox fx:id="formFactor3" mnemonicParsing="false" text="mITX" />
+                                                                                    </children>
+                                                                                </VBox>
+                                                                                <Label text="Сокет:" GridPane.rowIndex="2" />
+                                                                                <VBox GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <children>
+                                                                  <ListView fx:id="lst_socketProcessorsMotherboards" prefHeight="200.0" prefWidth="200.0">
+                                                                     <VBox.margin>
+                                                                        <Insets bottom="5.0" />
+                                                                     </VBox.margin>
+                                                                  </ListView>
+                                                               </children>
+                                                                                </VBox>
+                                                                                <Label text="Количество слотов памяти:" GridPane.rowIndex="3" />
+                                                                                <VBox GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                                                    <children>
+                                                                                        <CheckBox fx:id="countSlotMemory1" mnemonicParsing="false" text="2" />
+                                                                                        <CheckBox fx:id="countSlotMemory2" mnemonicParsing="false" text="4" />
+                                                                                    </children>
+                                                                                </VBox>
+                                                                            </children>
+                                                                            <padding>
+                                                                                <Insets bottom="10.0" />
+                                                                            </padding>
+                                                                        </GridPane>
+                                                                        <Button layoutX="20.0" layoutY="388.0" mnemonicParsing="false" onAction="#handleSerchMotherboards" prefHeight="25.0" prefWidth="271.0" text="Поиск" />
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                    </content>
+                                                </TitledPane>
+                                                <TitledPane animated="false" text="Модули памяти">
+                                                    <content>
+                                                        <AnchorPane>
+                                                            <children>
+                                                                <VBox alignment="TOP_CENTER" layoutX="19.600000381469727" layoutY="19.600000381469727" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <children>
+                                                                        <GridPane layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="9.200000000000045" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="9.200000000000045" AnchorPane.topAnchor="10.0">
+                                                                            <columnConstraints>
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                            </columnConstraints>
+                                                                            <rowConstraints>
+                                                                                <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints vgrow="SOMETIMES" />
+                                                                            </rowConstraints>
+                                                                            <children>
+                                                                                <Label text="Производитель:" GridPane.rowIndex="0" />
+                                                                                <TextField fx:id="text_manufacturerMemory" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                                                                <Label text="Объем памяти:" GridPane.rowIndex="1" />
+                                                                                <TextField fx:id="text_valumeMemory" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                                                <Label text="Тип памяти:" GridPane.rowIndex="2" />
+                                                                                <VBox GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                                                    <children>
+                                                                                        <CheckBox fx:id="typeMemory1" mnemonicParsing="false" text="DDR" />
+                                                                                        <CheckBox fx:id="typeMemory2" mnemonicParsing="false" text="DDR2" />
+                                                                                        <CheckBox fx:id="typeMemory3" mnemonicParsing="false" text="DDR3" />
+                                                                                    </children>
+                                                                                </VBox>
+                                                                            </children>
+                                                                            <padding>
+                                                                                <Insets bottom="10.0" />
+                                                                            </padding>
+                                                                        </GridPane>
+                                                                        <Button layoutX="20.0" layoutY="388.0" mnemonicParsing="false" onAction="#handleSerchMemoryModuls" prefHeight="25.0" prefWidth="271.0" text="Поиск" />
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                    </content>
+                                                </TitledPane>
+                                                <TitledPane animated="false" text="Жесткие диски">
+                                                    <content>
+                                                        <AnchorPane>
+                                                            <children>
+                                                                <VBox alignment="TOP_CENTER" layoutX="19.600000381469727" layoutY="19.600000381469727" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <children>
+                                                                        <GridPane layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="9.200000000000045" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="9.200000000000045" AnchorPane.topAnchor="10.0">
+                                                                            <columnConstraints>
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                            </columnConstraints>
+                                                                            <rowConstraints>
+                                                                                <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="40.00000762939453" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="33.99999237060547" minHeight="22.0" prefHeight="33.99999237060547" vgrow="SOMETIMES" />
+                                                                            </rowConstraints>
+                                                                            <children>
+                                                                                <Label text="Производитель:" GridPane.rowIndex="0" />
+                                                                                <TextField fx:id="text_manufacturerHardDrive" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                                                                <Label text="Объем накопителя (Гбайт):" GridPane.rowIndex="1" />
+                                                                                <TextField fx:id="text_valumeHardDrive" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                                                <Label text="Формат:" GridPane.rowIndex="2" />
+                                                                                <VBox GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                                                    <children>
+                                                                                        <CheckBox fx:id="form_factor1" mnemonicParsing="false" text="2,5&quot;" />
+                                                                                        <CheckBox fx:id="form_factor2" mnemonicParsing="false" text="3,5&quot;" />
+                                                                                    </children>
+                                                                                </VBox>
+                                                                            </children>
+                                                                            <padding>
+                                                                                <Insets bottom="10.0" />
+                                                                            </padding>
+                                                                        </GridPane>
+                                                                        <Button layoutX="20.0" layoutY="388.0" mnemonicParsing="false" onAction="#handleSerchHDD" prefHeight="25.0" prefWidth="271.0" text="Поиск" />
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                    </content>
+                                                </TitledPane>
+                                                <TitledPane animated="false" text="Видеокарты">
+                                                    <content>
+                                                        <AnchorPane>
+                                                            <children>
+                                                                <VBox alignment="TOP_CENTER" layoutX="19.600000381469727" layoutY="19.600000381469727">
+                                                                    <children>
+                                                                        <GridPane layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="9.200000000000045" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="9.200000000000045" AnchorPane.topAnchor="10.0">
+                                                                            <columnConstraints>
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                            </columnConstraints>
+                                                                            <rowConstraints>
+                                                                                <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="64.0" minHeight="55.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="48.0" minHeight="31.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="77.0" minHeight="61.0" prefHeight="76.0" vgrow="SOMETIMES" />
+                                                                                <RowConstraints maxHeight="33.99999237060547" minHeight="14.0" prefHeight="16.0" vgrow="SOMETIMES" />
+                                                                            </rowConstraints>
+                                                                            <children>
+                                                                                <Label text="Производитель:" GridPane.rowIndex="0" />
+                                                                                <TextField fx:id="text_manufacturerVideoCard" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                                                                <Label text="Объем памяти (Гбайт):" GridPane.rowIndex="1" />
+                                                                                <VBox GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                                                    <children>
+                                                                                        <CheckBox fx:id="valumeVideoCard1" mnemonicParsing="false" text="1 Гб" />
+                                                                                        <CheckBox fx:id="valumeVideoCard2" mnemonicParsing="false" text="2 Гб" />
+                                                                                        <CheckBox fx:id="valumeVideoCard3" mnemonicParsing="false" text="3 Гб" />
+                                                                                    </children>
+                                                                                </VBox>
+                                                                                <Label text="Тип памяти:" GridPane.rowIndex="2" />
+                                                                                <VBox GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                                                    <children>
+                                                                                        <CheckBox fx:id="typeVideoCard1" mnemonicParsing="false" text="GDDR3" />
+                                                                                        <CheckBox fx:id="typeVideoCard2" mnemonicParsing="false" text="GDDR5" />
+                                                                                    </children>
+                                                                                </VBox>
+                                                                                <Label text="Шина памяти (bit):" GridPane.rowIndex="3" />
+                                                                                <VBox GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                               <children>
+                                                                  <ListView fx:id="lst_tireVideoCard" prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                                                </VBox>
+                                                                            </children>
+                                                                            <padding>
+                                                                                <Insets bottom="10.0" />
+                                                                            </padding>
+                                                                        </GridPane>
+                                                                        <Button layoutX="20.0" layoutY="388.0" mnemonicParsing="false" onAction="#handleSerchVideoCard" prefHeight="25.0" prefWidth="271.0" text="Поиск" />
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                    </content>
+                                                </TitledPane>
+                                            </panes>
+                                        </Accordion>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </TitledPane>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
